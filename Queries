@@ -12,3 +12,23 @@ WHERE referee_id != 2 OR referee_id IS NULL;
 SELECT name, population, area
 FROM World
 WHERE area >= 3000000 OR population >= 25000000;
+
+--1148. Article Views I
+/*
+Runtime
+Beats 51.33% of users with Oracle
+*/
+SELECT DISTINCT author_id AS "id"
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY author_id ASC;
+
+/*
+Runtime
+Beats 69.53% of users with Oracle
+*/
+SELECT author_id AS "id"
+FROM Views
+WHERE author_id = viewer_id
+GROUP BY author_id
+ORDER BY author_id ASC;
