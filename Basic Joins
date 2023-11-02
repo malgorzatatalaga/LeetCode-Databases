@@ -39,3 +39,12 @@ LEFT JOIN Transactions t
 ON v.visit_id = t.visit_id
 WHERE t.visit_id IS NULL
 GROUP BY v.customer_id;
+
+--570. Managers with at Least 5 Direct Reports
+SELECT name 
+FROM Employee
+WHERE id IN
+(SELECT managerId
+FROM Employee
+GROUP BY managerId
+HAVING (COUNT(DISTINCT id)) >= 5);
